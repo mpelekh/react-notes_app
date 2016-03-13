@@ -1,2 +1,3 @@
 # react-notes_app
-Application for creating notes. NodeJS, MongoDB, React
+NodeJS, MongoDB, React.
+Application for creating notes (such as Google keep).
