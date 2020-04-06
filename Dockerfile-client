@@ -1,0 +1,18 @@
+FROM node:12
+
+COPY client /opt/app/client
+COPY etc /opt/app/etc
+COPY public /opt/app/public
+COPY package.json /opt/app
+COPY webpack.config.js /opt/app
+
+WORKDIR /opt/app
+
+RUN npm install
+RUN npx webpack
+RUN rm -rf node_modules client
+RUN rm -f package.json package-lock.json webpack.config.js
+
+EXPOSE 8090
+
+CMD cd public && npx node-static -p 8090 --host-address "0.0.0.0"

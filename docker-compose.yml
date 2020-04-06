@@ -1,0 +1,35 @@
+version: '3'
+services:
+
+  notes-web-client:
+    build:
+      context: .
+      dockerfile: Dockerfile-client
+    image: notes-web-client
+    ports:
+      - "8090:8090"
+    networks:
+      - task1-network
+
+  notes-api:
+    build:
+      context: .
+      dockerfile: Dockerfile-server
+    image: notes-api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo-db
+    networks:
+      - task1-network
+
+  mongo-db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - task1-network
+
+networks:
+    task1-network:
+        driver: bridge

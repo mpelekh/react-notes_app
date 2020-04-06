@@ -3,7 +3,7 @@
 	"serverPort": "3000",
 	"db": {
 		"name": "notes",
-		"host": "localhost",
+		"host": "mongo-db",
 		"port": "27017"
 	}
 }
