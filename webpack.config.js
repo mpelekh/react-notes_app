@@ -50,5 +50,10 @@ module.exports = {
                 loader: "json-loader"
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env.API_PREFIX': JSON.stringify(process.env.API_PREFIX)
+        })
+    ]
 }

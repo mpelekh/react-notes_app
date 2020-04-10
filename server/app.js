@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
-import { serverPort } from '../etc/config.json';
+import config from './config.js';
 
 import * as db from './utils/DataBaseUtils.js';
 
@@ -27,6 +27,6 @@ app.delete('/notes/:id', (req, res) => {
 	db.deleteNote(req.params.id).then(data => res.send(data));
 });
 
-const server = app.listen(serverPort, () => {
-	console.log(`Server is up and running on port ${serverPort}`);
+const server = app.listen(config.listenPort, () => {
+	console.log(`Server is up and running on port ${config.listenPort}`);
 });

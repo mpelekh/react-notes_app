@@ -1,17 +1,17 @@
 import axios from 'axios';
 
-import { apiPrefix } from '../../etc/config.json';
+import config from '../config.js';
 
 export default {
     listNotes() {
-        return axios.get(`${apiPrefix}/notes`);
+        return axios.get(`${config.apiPrefix}/notes`);
     },
 
     createNote(data) {
-        return axios.post(`${apiPrefix}/notes`, data);
+        return axios.post(`${config.apiPrefix}/notes`, data);
     },
 
     deleteNote(noteId) {
-        return axios.delete(`${apiPrefix}/notes/${noteId}`);
+        return axios.delete(`${config.apiPrefix}/notes/${noteId}`);
     }
 }
