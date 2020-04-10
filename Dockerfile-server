@@ -1,6 +1,5 @@
 FROM node:12
 
-COPY etc /opt/app/etc
 COPY server /opt/app/server
 COPY package.json /opt/app
 

@@ -22,6 +22,8 @@ services:
       - mongo-db
     networks:
       - task1-network
+    environment:
+      DB_HOST: mongo-db
 
   mongo-db:
     image: mongo:latest
