@@ -7,7 +7,17 @@ import config from '../config.js';
 const Note = mongoose.model('Note');
 
 export function setUpConnection() {
-	mongoose.connect(`mongodb://${config.mongo.dbHost}:${config.mongo.dbPort}/${config.mongo.dbName}`);
+	const {dbHost, dbPort, dbName, dbUser, dbPassword} = config.mongo;
+	const connectionString = `mongodb://${dbHost}:${dbPort}`;
+
+	mongoose.Promise = global.Promise;
+	
+	mongoose.connect(connectionString, {
+		useMongoClient: true,
+		user: dbUser,
+        pass: dbPassword,
+        db: dbName,
+	});
 }
 
 export function listNotes() {
