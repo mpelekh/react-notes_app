@@ -15,7 +15,7 @@
     "classnames": "^2.2.3",
     "cors": "*",
     "events": "^1.1.0",
-    "mongoose": "^4.4.6",
+    "mongoose": "^5.9.7",
     "flux": "^2.1.1",
     "jquery": "*",
     "keymirror": "^0.1.1",
