@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-client
+  labels:
+    app: notes-client
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: notes-client
+  template:
+    metadata:
+      labels:
+        app: notes-client
+    spec:
+      containers:
+      - name: notes-client
+        image: notes-client:latest
+        ports:
+        - containerPort: 8090
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "200m" 

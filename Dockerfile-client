@@ -1,5 +1,11 @@
 FROM node:12
 
+# Accept API_PREFIX as a build argument
+ARG API_PREFIX=http://notes-server-service:3000
+
+# Set the environment variable
+ENV API_PREFIX=${API_PREFIX}
+
 COPY client /opt/app/client
 COPY public /opt/app/public
 COPY package.json /opt/app
