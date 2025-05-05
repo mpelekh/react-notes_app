@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: notes-server
-        image: notes-server:latest
+        image: mpelekh/notes-server:latest
         ports:
         - containerPort: 3000
         env:

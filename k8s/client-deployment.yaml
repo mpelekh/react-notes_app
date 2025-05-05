@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: notes-client
-        image: notes-client:latest
+        image: mpelekh/notes-client:latest
         ports:
         - containerPort: 8090
         resources:
