@@ -1,10 +1,5 @@
-FROM node:12
-
-# Accept API_PREFIX as a build argument
-ARG API_PREFIX=http://notes-server-service:3000
-
-# Set the environment variable
-ENV API_PREFIX=${API_PREFIX}
+# Build stage
+FROM node:12 AS builder
 
 COPY client /opt/app/client
 COPY public /opt/app/public
@@ -15,8 +10,14 @@ WORKDIR /opt/app
 
 RUN npm install
 RUN npx webpack
-RUN rm -rf node_modules client
-RUN rm -f package.json package-lock.json webpack.config.js
+
+# Final stage
+FROM node:12-slim
+
+WORKDIR /opt/app
+
+# Copy only the built static files from the builder stage
+COPY --from=builder /opt/app/public /opt/app/public
 
 EXPOSE 8090
 

@@ -1,4 +1,5 @@
-FROM node:12
+# Build stage
+FROM node:12 AS builder
 
 COPY server /opt/app/server
 COPY package.json /opt/app
@@ -6,6 +7,16 @@ COPY package.json /opt/app
 WORKDIR /opt/app
 
 RUN npm install
+
+# Final stage
+FROM node:12-slim
+
+WORKDIR /opt/app
+
+# Copy only the necessary files from the builder stage
+COPY --from=builder /opt/app/server /opt/app/server
+COPY --from=builder /opt/app/node_modules /opt/app/node_modules
+COPY --from=builder /opt/app/package.json /opt/app/package.json
 
 EXPOSE 3000
 
