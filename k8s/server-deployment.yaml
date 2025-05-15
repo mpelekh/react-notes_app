@@ -5,7 +5,7 @@ metadata:
   labels:
     app: notes-server
 spec:
-  replicas: 2
+  replicas: 10
   selector:
     matchLabels:
       app: notes-server
